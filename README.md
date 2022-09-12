@@ -11,6 +11,11 @@ You can find original dataset in file data.csv and dataset after preprocessing a
 <br /> You can use Poetry tool to get all dependecies or find all requirements in pyproject.toml. <br />
 To run training of the network write:
 <br /><br />
+$ git clone https://github.com/LeweLotki/NLP_depression_detection.git
+<br />
+$ cd NLP_depression_detection
+<br />
 $ python3 main.py
+<br />
 <br /><br />
 If you want to test diffrent sentences than default one, change content of sentence.txt file.
