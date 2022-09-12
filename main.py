@@ -2,16 +2,7 @@ import tensorflow as tf
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-import sklearn as sk
-import seaborn as sns
-import nltk
-from nltk.tokenize import RegexpTokenizer
-from nltk.stem import WordNetLemmatizer,PorterStemmer
-from nltk.corpus import stopwords
-import re
 from nltk.stem import PorterStemmer
-from nltk import word_tokenize
-from collections import defaultdict
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.preprocessing import sequence
 from tensorflow.keras.utils import normalize
@@ -21,10 +12,8 @@ from tensorflow.keras.layers import Embedding
 from tensorflow.keras.optimizers import Adam
 from sklearn.metrics import confusion_matrix
 from seaborn import heatmap
-from data_loader import preprocess, stemming, standard_len, number_of_words, df, mapped_list, word_list
-
-with open('sentence.txt', 'r') as file:
-    sentence = file.read().replace('\n', ' ')
+from data_loader import standard_len, number_of_words, df, mapped_list, word_list, pred_sentence
+from preprocessing import preprocess, stemming
 
 tf.random.set_seed(
                 seed=0
@@ -40,7 +29,6 @@ class my_model:
         self.pool_size = pool_size
         self.strides = strides
         self.input_shape = input_shape
-        
         
     def cnn(self):
 
@@ -132,9 +120,7 @@ ax.set_xlabel('Prediciton Label')
 ax.set_ylabel('True Label')
 ax.set_title('Confusion Matrix')
 
-my_sentence = sentence
-
-prediction = model_prediciton(model=model, sentence=my_sentence)
+prediction = model_prediciton(model=model, sentence=pred_sentence)
 
 if prediction[0][0] > .5:print('Sentence indicate depression with {}% probability'.format(np.round(100*prediction[0][0], 2)))
 else:print('Probability of depression is only {}%'.format(np.round(100*prediction[0][0], 2)))
