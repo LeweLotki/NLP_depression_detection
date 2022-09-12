@@ -33,26 +33,28 @@ model = my_model(
 model = model.ann()
 model.summary()
 
-history = model.fit(x_train, y_train, epochs=20, batch_size=20)
+if __name__ == '__main__':
 
-test_loss, test_acc = model.evaluate(x_test, y_test)
-print('Test Loss: {}, Test Accuracy: {}'.format(test_loss, test_acc))
+    history = model.fit(x_train, y_train, epochs=20, batch_size=20)
 
-y_pred = model.predict(x_test)
-y_class = np.round(y_pred)
+    test_loss, test_acc = model.evaluate(x_test, y_test)
+    print('Test Loss: {}, Test Accuracy: {}'.format(test_loss, test_acc))
 
-pd.DataFrame(history.history).plot(figsize=(8,5))
+    y_pred = model.predict(x_test)
+    y_class = np.round(y_pred)
 
-confusion_mtx = confusion_matrix(y_test, y_class)
-fig, ax = plt.subplots(figsize=(12,8))
-ax = heatmap(confusion_mtx, annot=True, fmt='d', ax=ax, cmap='Blues')
-ax.set_xlabel('Prediciton Label')
-ax.set_ylabel('True Label')
-ax.set_title('Confusion Matrix')
+    pd.DataFrame(history.history).plot(figsize=(8,5))
 
-prediction = model_prediciton(model=model, sentence=pred_sentence)
+    confusion_mtx = confusion_matrix(y_test, y_class)
+    fig, ax = plt.subplots(figsize=(12,8))
+    ax = heatmap(confusion_mtx, annot=True, fmt='d', ax=ax, cmap='Blues')
+    ax.set_xlabel('Prediciton Label')
+    ax.set_ylabel('True Label')
+    ax.set_title('Confusion Matrix')
 
-if prediction[0][0] > .5:print('Sentence indicate depression with {}% probability'.format(np.round(100*prediction[0][0], 2)))
-else:print('Probability of depression is only {}%'.format(np.round(100*prediction[0][0], 2)))
+    prediction = model_prediciton(model=model, sentence=pred_sentence)
 
-plt.show()
+    if prediction[0][0] > .5:print('Sentence indicate depression with {}% probability'.format(np.round(100*prediction[0][0], 2)))
+    else:print('Probability of depression is only {}%'.format(np.round(100*prediction[0][0], 2)))
+
+    plt.show()
