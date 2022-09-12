@@ -21,13 +21,13 @@ from tensorflow.keras.layers import Embedding
 from tensorflow.keras.optimizers import Adam
 from sklearn.metrics import confusion_matrix
 from seaborn import heatmap
-from data_loader import preprocess, stemming, standard_len, number_of_words
+from data_loader import preprocess, stemming, standard_len, number_of_words, df, mapped_list, word_list
 
 tf.random.set_seed(
                 seed=0
 )
 
- class my_model:
+class my_model:
     
     def __init__(self, embedding=0, ker=0, ker_2=0, pool_size=0, strides=0, input_shape=0):
         
@@ -72,7 +72,7 @@ tf.random.set_seed(
 
         return model
 
-def model_prediciton(model=model, sentence=''):
+def model_prediciton(model, sentence):
     
     sentence = preprocess(sentence)
     sentence = stemming(sentence)
@@ -94,7 +94,7 @@ def model_prediciton(model=model, sentence=''):
 labels = np.asarray(df['label'].tolist()).astype('float64')
 
 max_text_length = standard_len # based on the statistic deviation
-mapped_list = sequence.pad_sequences(mapped_list, maxlen=max_text_length)
+mapped_list = sequence.pad_sequences(mapped_list, maxlen=standard_len)
 
 # Normalizing by division
 mapped_list = mapped_list / number_of_words
@@ -131,7 +131,7 @@ ax.set_ylabel('True Label')
 ax.set_title('Confusion Matrix')
 plt.show()
 
-my_sentence = 'Isolation, empty feeling, easily agitated, nothing is interesting anymore, you wanna sleep all the time to forget about living. Eating more than usual when you’re not hungry or not at all and still no hunger. Depression comes in many forms but a constant feeling of emptiness stays usually'
+my_sentence = 'Isolation, empty feeling, easily agitated, nothing is interesting anymore, you wanna sleep all the time to forget about living. Eating more than usual when youre not hungry or not at all and still no hunger. Depression comes in many forms but a constant feeling of emptiness stays usually'
 
 prediction = model_prediciton(model=model, sentence=my_sentence)
 
