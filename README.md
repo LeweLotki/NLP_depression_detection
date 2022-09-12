@@ -17,5 +17,5 @@ $ cd NLP_depression_detection
 <br />
 $ python3 main.py
 <br />
-<br /><br />
+<br />
 If you want to test diffrent sentences than default one, change content of sentence.txt file.
