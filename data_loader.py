@@ -1,11 +1,8 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
-import sklearn as sk
-import seaborn as sns
 import nltk
 from nltk.tokenize import RegexpTokenizer
-from nltk.stem import WordNetLemmatizer,PorterStemmer
+from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
 import re
 from nltk.stem import PorterStemmer
