@@ -23,6 +23,9 @@ from sklearn.metrics import confusion_matrix
 from seaborn import heatmap
 from data_loader import preprocess, stemming, standard_len, number_of_words, df, mapped_list, word_list
 
+with open('sentence.txt', 'r') as file:
+    sentence = file.read().replace('\n', ' ')
+
 tf.random.set_seed(
                 seed=0
 )
@@ -121,7 +124,6 @@ y_pred = model.predict(x_test)
 y_class = np.round(y_pred)
 
 pd.DataFrame(history.history).plot(figsize=(8,5))
-plt.show()
 
 confusion_mtx = confusion_matrix(y_test, y_class)
 fig, ax = plt.subplots(figsize=(12,8))
@@ -129,11 +131,12 @@ ax = heatmap(confusion_mtx, annot=True, fmt='d', ax=ax, cmap='Blues')
 ax.set_xlabel('Prediciton Label')
 ax.set_ylabel('True Label')
 ax.set_title('Confusion Matrix')
-plt.show()
 
-my_sentence = 'Isolation, empty feeling, easily agitated, nothing is interesting anymore, you wanna sleep all the time to forget about living. Eating more than usual when youre not hungry or not at all and still no hunger. Depression comes in many forms but a constant feeling of emptiness stays usually'
+my_sentence = sentence
 
 prediction = model_prediciton(model=model, sentence=my_sentence)
 
 if prediction[0][0] > .5:print('Sentence indicate depression with {}% probability'.format(np.round(100*prediction[0][0], 2)))
 else:print('Probability of depression is only {}%'.format(np.round(100*prediction[0][0], 2)))
+
+plt.show()
