@@ -12,7 +12,6 @@ You can find original dataset in file data.csv and dataset after preprocessing a
 <br /> You can use Poetry tool to get all dependecies or find all requirements in pyproject.toml. <br />
 
 To open website on your local server write:
-
 <br />
 $ git clone https://github.com/LeweLotki/NLP_depression_detection.git
 <br />
