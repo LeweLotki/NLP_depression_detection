@@ -12,14 +12,13 @@ You can find original dataset in file data.csv and dataset after preprocessing a
 <br /> You can use Poetry tool to get all dependecies or find all requirements in pyproject.toml. <br />
 
 To open website on your local server write:
-
-<br />
+<br /><br />
 $ git clone https://github.com/LeweLotki/NLP_depression_detection.git
 <br />
 $ cd NLP_depression_detection/ML_deployment
 <br />
 $ python3 manage.py runserver
-<br />
+<br /><br />
 
 To run training of the network write:
 <br /><br />
