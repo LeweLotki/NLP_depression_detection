@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Application</title>
+</head>
+<body>
+    <h1>Depression detection based on natural language processing</h1>
+    <hr>
+    {% if result %}
+    <h1> {{result}} </h1>
+    {% endif %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        Enter chosen text : <input type="text" name="pred_sentence" required><br>
+        <input type="submit">
+    </form>
+</body>
+</html>
