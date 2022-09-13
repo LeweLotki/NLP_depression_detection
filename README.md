@@ -13,7 +13,7 @@ You can find original dataset in file data.csv and dataset after preprocessing a
 
 To open website on your local server write:
 
-<br /><br />
+<br />
 $ git clone https://github.com/LeweLotki/NLP_depression_detection.git
 <br />
 $ cd NLP_depression_detection/ML_deployment
